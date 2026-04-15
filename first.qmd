@@ -8,21 +8,15 @@ library(tidyverse)
 library(readr)
 library(jsonlite)
 
-url <- "https://paddlestats.net/json/paddlers/bartonre01"
-rebeccajson <- read_json(url, simplifyVector = TRUE)
+url <- "https://paddlestats.net/json/r/ADK90/2025/2007"
+adkjson <- read_json(url, simplifyVector = TRUE)
 
-rebecca <- rebeccajson$results |> as_tibble() |>
-  unnest_longer(partners, keep_empty = TRUE) |>
-  unnest_wider(col = c(partners))
+adk <- adk$results |> as_tibble() |> 
+  unnest_wider(rank) |> 
+  unnest_longer(paddlers) |>
+  unnest_wider(col = c(paddlers, elemVals))
 ```
 
 ```{r}
-rebecca_simple <- rebecca |> group_by(resultId) |> slice(1) |>
-  mutate(raceDate = ymd(raceDate))
-
-rebecca_ausable <- rebecca_simple |> filter(raceId == "Ausable")
-
-ggplot(rebecca_ausable, aes(x = raceDate, y = place)) +
-  geom_point()
 ```
 
