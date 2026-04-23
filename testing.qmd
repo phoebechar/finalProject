@@ -1,0 +1,82 @@
+---
+title: "testing"
+format: html
+---
+
+0 - OLD FORGE
+1 - FISH CREEK/REMSEN
+2 - PLATTSBURGH
+
+```{r}
+day1 <- read.csv("day1.csv") |> filter(year > 2007)
+day2 <- read.csv("day2.csv") |> filter(year > 2007)
+day3 <- read.csv("day3.csv") |> filter(year > 2007)
+weather <- read.csv("weather.csv")
+water <- read.csv("water_level.csv")
+dates <- read.csv("dates.csv")
+
+dates <- dates |> select(day.1, day.2, day.3) |>
+  mutate(day.1 = mdy(day.1), day.2 = mdy(day.2), day.3 = mdy(day.3))
+
+weather <- weather |> mutate(time = ymd(time))
+```
+
+```{r}
+day1_weather <- weather |> filter(time %in% dates$day.1 & location_id == 0) |>
+  mutate(time = year(time))
+
+day2_weather <- weather |> filter(time %in% dates$day.2 & location_id == 1) |>
+  mutate(time = year(time))
+
+day3_weather <- weather |> filter(time %in% dates$day.3 & location_id == 2) |>
+  mutate(time = year(time))
+```
+
+```{r}
+day1_top <- day1 |> group_by(year) |> arrange(value) |> slice(1)
+day2_top <- day2 |> group_by(year) |> arrange(value) |> slice(1)
+day3_top <- day3 |> group_by(year) |> arrange(value) |> slice(1)
+```
+
+```{r}
+day1_top <- left_join(day1_top, day1_weather, join_by(year == time))
+day2_top <- left_join(day2_top, day2_weather, join_by(year == time))
+day3_top <- left_join(day3_top, day3_weather, join_by(year == time))
+```
+
+```{r}
+day1_full <- left_join(day1_top, water) |> select(!location_id & !day2 & !day3)
+day2_full <- left_join(day2_top, water) |> select(!location_id & !day1 & !day3)
+day3_full <- left_join(day3_top, water) |> select(!location_id & !day1 & !day2)
+```
+
+```{r}
+day1_full <- day1_full |> 
+  rename(temp = temperature_2m_mean...F.) |>
+  rename(rain = precipitation_sum..inch.) |>
+  rename(water = day1)
+
+day2_full <- day2_full |> 
+  rename(temp = temperature_2m_mean...F.) |>
+  rename(rain = precipitation_sum..inch.) |>
+  rename(water = day2)
+
+day3_full <- day3_full |> 
+  rename(temp = temperature_2m_mean...F.) |>
+  rename(rain = precipitation_sum..inch.) |>
+  rename(water = day3)
+```
+
+```{r}
+library(broom)
+library(GGally)
+
+mod1 <- lm(value ~ water, day2_full)
+summary(mod1)
+
+ggpairs(day1_full, columns = 6:9)
+ggpairs(day2_full, columns = 6:9)
+ggpairs(day3_full, columns = 6:9)
+```
+
+

@@ -8,15 +8,29 @@ library(tidyverse)
 library(readr)
 library(jsonlite)
 
-url <- "https://paddlestats.net/json/r/ADK90/2025/2007"
-adkjson <- read_json(url, simplifyVector = TRUE)
+url1 <- "https://paddlestats.net/json/course/adk90_day1_OF_to_BML"
+day1json <- read_json(url1, simplifyVector = TRUE)
 
-adk <- adk$results |> as_tibble() |> 
-  unnest_wider(rank) |> 
-  unnest_longer(paddlers) |>
-  unnest_wider(col = c(paddlers, elemVals))
+columns <- c("year", "raceId", "boatType", "classId", "place", "value")
+
+day1 <- day1json$results |> as_tibble() |> 
+  select(any_of(columns))
+
+url2 <- "https://paddlestats.net/json/course/adk90_day2_LLB_to_CRS"
+day2json <- read_json(url2, simplifyVector = TRUE)
+
+day2 <- day2json$results |> as_tibble() |> 
+  select(any_of(columns))
+
+url3 <- "https://paddlestats.net/json/course/adk90_day3_FC_to_SL"
+day3json <- read_json(url3, simplifyVector = TRUE)
+
+day3 <- day3json$results |> as_tibble() |> 
+  select(any_of(columns))
 ```
 
 ```{r}
+write_csv(day1, "day1.csv")
+write_csv(day2, "day2.csv")
+write_csv(day3, "day3.csv")
 ```
-
