@@ -1,1 +1,8 @@
-Using PaddleStats to make some cool data visualizations.
+# Untitled
+
+
+### Data
+
+### Questions
+
+### GRAPH

@@ -22,22 +22,21 @@ summary(mod_time)
 27260.19 - (39.32*57) - (679.29*4)
 ```
 
-
 ## Data Introduction
 
 Data about the ADK 90-Miler from 2008-2025
 
-- Results (times, boat types, etc.)
-- Weather and water level data
-  - collected over 3 days and locations
-  - manually collected and compiled
+-   Results (times, boat types, etc.)
+-   Weather and water level data
+    -   collected over 3 days and locations
+    -   manually collected and compiled
 
 ## Question of Interest
 
 Can I produce a helpful predictive model for future boats' times in the 90-Miler?
-  
-  - and, can I make this accessible to others?
-  
+
+-   and, can I make this accessible to others?
+
 I was inspired by Ryan Matthews who has created a model predicting times for the Ausable Canoe Marathon.
 
 ![](ryan.png)
@@ -71,11 +70,11 @@ My end model will use water level, boat type, number of paddlers, and temperatur
 
 I am working to create a shiny app that lets users choose:
 
-- the day they are interested in
-- the craft 
-- *the number of paddlers* (this is somewhat complicated)
-- the temperature
-- the water level
+-   the day they are interested in
+-   the craft
+-   *the number of paddlers* (this is somewhat complicated)
+-   the temperature
+-   the water level
 
 And produces a prediction for that craft's time as well as a graph of the distribution of past times for the day with a line representing the prediction.
 
@@ -93,5 +92,3 @@ ggplot(day2_type, aes(x = value)) +
 ```
 
 ## Thank you!
-
-
