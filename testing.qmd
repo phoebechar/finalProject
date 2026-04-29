@@ -6,6 +6,9 @@ format: html
 0 - OLD FORGE
 1 - FISH CREEK/REMSEN
 2 - PLATTSBURGH
+```{r}
+library(tidyverse)
+```
 
 ```{r}
 day1 <- read.csv("day1.csv") |> filter(year > 2007)
@@ -33,21 +36,15 @@ day3_weather <- weather |> filter(time %in% dates$day.3 & location_id == 2) |>
 ```
 
 ```{r}
-day1_top <- day1 |> group_by(year) |> arrange(value) |> slice(1)
-day2_top <- day2 |> group_by(year) |> arrange(value) |> slice(1)
-day3_top <- day3 |> group_by(year) |> arrange(value) |> slice(1)
+day1 <- left_join(day1, day1_weather, join_by(year == time))
+day2 <- left_join(day2, day2_weather, join_by(year == time))
+day3 <- left_join(day3, day3_weather, join_by(year == time))
 ```
 
 ```{r}
-day1_top <- left_join(day1_top, day1_weather, join_by(year == time))
-day2_top <- left_join(day2_top, day2_weather, join_by(year == time))
-day3_top <- left_join(day3_top, day3_weather, join_by(year == time))
-```
-
-```{r}
-day1_full <- left_join(day1_top, water) |> select(!location_id & !day2 & !day3)
-day2_full <- left_join(day2_top, water) |> select(!location_id & !day1 & !day3)
-day3_full <- left_join(day3_top, water) |> select(!location_id & !day1 & !day2)
+day1_full <- left_join(day1, water) |> select(!location_id & !day2 & !day3)
+day2_full <- left_join(day2, water) |> select(!location_id & !day1 & !day3)
+day3_full <- left_join(day3, water) |> select(!location_id & !day1 & !day2)
 ```
 
 ```{r}
@@ -65,18 +62,17 @@ day3_full <- day3_full |>
   rename(temp = temperature_2m_mean...F.) |>
   rename(rain = precipitation_sum..inch.) |>
   rename(water = day3)
+
+library(broom)
+mod1 <- lm(value ~ boatType + water + temp + rain, day3_full)
+
+summary(mod1)
 ```
 
 ```{r}
-library(broom)
-library(GGally)
-
-mod1 <- lm(value ~ water, day2_full)
-summary(mod1)
-
-ggpairs(day1_full, columns = 6:9)
-ggpairs(day2_full, columns = 6:9)
-ggpairs(day3_full, columns = 6:9)
+write_csv(day1_full, "day1_full.csv")
+write_csv(day2_full, "day2_full.csv")
+write_csv(day3_full, "day3_full.csv")
 ```
 
 

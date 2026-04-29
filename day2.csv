@@ -143,8 +143,8 @@ year,raceId,boatType,classId,place,value
 2019,ADK90,Canoe,oc4stockmix,1,16271
 2011,ADK90,Canoe,oc4mix,4,16272
 2004,ADK90,Kayak,k1unlimited,1,16276
-2013,ADK90,Canoe,oc4mix,7,16276
 2008,ADK90,Canoe,voyageur,3,16276
+2013,ADK90,Canoe,oc4mix,7,16276
 2004,ADK90,Canoe,oc2ammix,1,16285
 2004,ADK90,Canoe,oc2ammixmaster,1,16285
 2011,ADK90,Canoe,oc2ammix,1,16287
@@ -344,8 +344,8 @@ year,raceId,boatType,classId,place,value
 2008,ADK90,Canoe,voyageuropen,1,17155
 2000,ADK90,Canoe,oc2rac,4,17159
 2017,ADK90,Canoe,oc2ammix,1,17164
-2015,ADK90,Canoe,oc4open,4,17175
 2004,ADK90,Canoe,oc2ammixmaster,2,17175
+2015,ADK90,Canoe,oc4open,4,17175
 2009,ADK90,Canoe,oc4mix,3,17176
 2004,ADK90,Canoe,oc2std,3,17185
 2021,ADK90,Canoe,oc2stockmixmaster,1,17185
@@ -357,8 +357,8 @@ year,raceId,boatType,classId,place,value
 2006,ADK90,Kayak,k1unlimited,3,17229
 2000,ADK90,Kayak,k2,1,17229
 2021,ADK90,Canoe,oc2stockmixveterans,1,17235
-2004,ADK90,Kayak,k1unlimited,2,17239
 2007,ADK90,Canoe,oc2ammaster,3,17239
+2004,ADK90,Kayak,k1unlimited,2,17239
 2008,ADK90,Canoe,oc2stockmaster,1,17243
 2009,ADK90,Kayak,k2,2,17243
 2005,ADK90,Canoe,oc2ammaster,7,17247
@@ -721,8 +721,8 @@ year,raceId,boatType,classId,place,value
 2004,ADK90,Canoe,oc2ammix,2,18256
 2004,ADK90,Canoe,oc2ammixmaster,4,18258
 2011,ADK90,Canoe,oc4,5,18259
-2010,ADK90,Kayak,k1tour,1,18259
 2017,ADK90,Canoe,oc2stockmaster,1,18259
+2010,ADK90,Kayak,k1tour,1,18259
 2021,ADK90,Canoe,oc2stockmix,1,18264
 2002,ADK90,Canoe,oc2am,2,18266
 2024,ADK90,Canoe,oc4stockmaster,3,18272.5
@@ -1138,8 +1138,8 @@ year,raceId,boatType,classId,place,value
 2016,ADK90,Canoe,oc2stockmaster,2,19014
 2003,ADK90,Kayak,k1tourveteran,1,19015
 2010,ADK90,Canoe,open,NA,19015
-2013,ADK90,Canoe,oc2stockveteran,1,19016
 2004,ADK90,Canoe,oc4,3,19016
+2013,ADK90,Canoe,oc2stockveteran,1,19016
 2009,ADK90,Canoe,oc4mix,7,19018
 2000,ADK90,Canoe,oc2std,4,19020
 2003,ADK90,Canoe,oc2std,5,19021
@@ -1188,8 +1188,8 @@ year,raceId,boatType,classId,place,value
 2022,ADK90,Canoe,oc4stockwomen,1,19082
 2019,ADK90,Canoe,oc4stockwomen,1,19082
 2003,ADK90,Canoe,oc2stdmixmaster,1,19086
-2015,ADK90,Canoe,oc4,3,19088
 2007,ADK90,Canoe,oc2ammaster,8,19088
+2015,ADK90,Canoe,oc4,3,19088
 2002,ADK90,Canoe,oc2ammix,2,19089
 2008,ADK90,Canoe,oc4,6,19093
 2019,ADK90,Canoe,oc2ammix,1,19093
@@ -1492,8 +1492,8 @@ year,raceId,boatType,classId,place,value
 2025,ADK90,Canoe,oc4stockmix,4,19526.4
 2009,ADK90,Canoe,open,NA,19527
 2025,ADK90,Canoe,oc2stockmaster,1,19527
-2007,ADK90,Unknown,voyageur,5,19530
 2012,ADK90,Guideboat,g2,1,19530
+2007,ADK90,Unknown,voyageur,5,19530
 2000,ADK90,Canoe,oc1stdmaster,2,19530
 2010,ADK90,Canoe,voyageur,8,19531
 2008,ADK90,Canoe,open,NA,19532
@@ -1950,8 +1950,8 @@ year,raceId,boatType,classId,place,value
 2021,ADK90,Unknown,open3,2,20132
 2007,ADK90,Canoe,oc2stock,5,20132
 2009,ADK90,Canoe,oc2stockmix,3,20132
-2019,ADK90,Canoe,oc2jrsr,1,20133
 2012,ADK90,Kayak,k2,3,20133
+2019,ADK90,Canoe,oc2jrsr,1,20133
 2024,ADK90,Canoe,oc2stockmix,4,20133.7
 2004,ADK90,Guideboat,g2,2,20135
 2014,ADK90,Canoe,oc2ammix,1,20136
@@ -2104,8 +2104,8 @@ year,raceId,boatType,classId,place,value
 2024,ADK90,Canoe,oc2stock,6,20342.5
 2025,ADK90,Canoe,oc4stock,5,20343.6
 2022,ADK90,Unknown,solorecwomen,1,20344.2
-2013,ADK90,Kayak,k2women,1,20345
 2019,ADK90,Canoe,oc1stock,1,20345
+2013,ADK90,Kayak,k2women,1,20345
 2008,ADK90,Canoe,open,NA,20348
 2023,ADK90,Canoe,oc2stockmixmaster,7,20349.8
 2005,ADK90,Canoe,oc2stockmaster,11,20352
@@ -2148,8 +2148,8 @@ year,raceId,boatType,classId,place,value
 2000,ADK90,Kayak,k1master,6,20398
 2002,ADK90,Kayak,k2,4,20398
 2012,ADK90,Canoe,open,NA,20399
-2000,ADK90,Canoe,oc2stdmaster,16,20401
 2022,ADK90,Canoe,oc2stockmaster,3,20401
+2000,ADK90,Canoe,oc2stdmaster,16,20401
 2007,ADK90,Canoe,oc2amwomen,2,20403
 2008,ADK90,Kayak,k1tour,4,20404
 2024,ADK90,Canoe,oc2stock,9,20405.9
@@ -2182,8 +2182,8 @@ year,raceId,boatType,classId,place,value
 2021,ADK90,Kayak,k1unlimitedveteran,1,20434
 2016,ADK90,Canoe,open,NA,20434
 2003,ADK90,Canoe,oc2stdveteran,1,20438
-2010,ADK90,Canoe,oc1rec,4,20442
 2006,ADK90,Canoe,oc2recmaster,4,20442
+2010,ADK90,Canoe,oc1rec,4,20442
 2022,ADK90,Canoe,oc1stockmaster,2,20442.3
 2023,ADK90,Canoe,oc2stock,9,20442.9
 2010,ADK90,Canoe,oc1rec,5,20443
@@ -2320,8 +2320,8 @@ year,raceId,boatType,classId,place,value
 2003,ADK90,Canoe,oc2std,10,20621
 2006,ADK90,Canoe,oc2rec,4,20621
 2023,ADK90,Unknown,solrecmaster,1,20621.8
-2004,ADK90,Canoe,oc1stdmaster,10,20622
 2002,ADK90,Canoe,oc2stdmix,3,20622
+2004,ADK90,Canoe,oc1stdmaster,10,20622
 2003,ADK90,Kayak,k1recmaster,1,20622
 2003,ADK90,Kayak,k1tourmaster,5,20622
 2011,ADK90,Canoe,oc1stock,3,20625
@@ -2537,8 +2537,8 @@ year,raceId,boatType,classId,place,value
 2002,ADK90,Canoe,open,2,20915
 2007,ADK90,Canoe,oc1am,5,20915
 2022,ADK90,Unknown,solorecwomen,2,20916.5
-2009,ADK90,Canoe,oc2ammix,5,20917
 2015,ADK90,Canoe,oc4,5,20917
+2009,ADK90,Canoe,oc2ammix,5,20917
 2012,ADK90,Canoe,open,NA,20917
 2012,ADK90,Guideboat,g1,2,20918
 2007,ADK90,Kayak,k2,3,20925
@@ -2740,8 +2740,8 @@ year,raceId,boatType,classId,place,value
 2016,ADK90,Guideboat,g1,2,21214
 2023,ADK90,Canoe,oc1stockmaster,3,21216
 2006,ADK90,Canoe,open,NA,21218
-2017,ADK90,Guideboat,g1,2,21221
 2012,ADK90,Canoe,oc2am,3,21221
+2017,ADK90,Guideboat,g1,2,21221
 2001,ADK90,Canoe,oc2rec,4,21221
 2021,ADK90,Canoe,oc2stockveteran,1,21221
 2013,ADK90,Canoe,open,NA,21222
@@ -2889,8 +2889,8 @@ year,raceId,boatType,classId,place,value
 2012,ADK90,Canoe,open,NA,21441
 2011,ADK90,Canoe,voyageur,6,21441
 2005,ADK90,Canoe,oc1ammaster,4,21443
-2014,ADK90,Canoe,open,NA,21446
 2001,ADK90,Canoe,oc2stdmaster,16,21446
+2014,ADK90,Canoe,open,NA,21446
 2025,ADK90,Unknown,solorec,3,21447.4
 2003,ADK90,Guideboat,g2trad,1,21448
 2001,ADK90,Canoe,oc2rec,5,21448
@@ -3063,8 +3063,8 @@ year,raceId,boatType,classId,place,value
 2023,ADK90,Canoe,oc4stockmix,16,21689.7
 2003,ADK90,Canoe,oc2recmixmaster,1,21691
 2025,ADK90,Canoe,oc2stockmix,4,21692.2
-2006,ADK90,Kayak,k1sea,1,21693
 2015,ADK90,Kayak,k1unlimited,3,21693
+2006,ADK90,Kayak,k1sea,1,21693
 2019,ADK90,Canoe,oc1recveteran,2,21694
 2014,ADK90,Canoe,oc1stockmaster,3,21695
 2011,ADK90,Canoe,open,NA,21697
@@ -3110,8 +3110,8 @@ year,raceId,boatType,classId,place,value
 2011,ADK90,Canoe,oc2stockmix,4,21757
 2005,ADK90,Canoe,oc1stockmaster,10,21757
 2009,ADK90,Canoe,oc1am,1,21757
-2022,ADK90,Canoe,oc2stockopen,9,21757
 2005,ADK90,Kayak,k1tourwomen,1,21757
+2022,ADK90,Canoe,oc2stockopen,9,21757
 2007,ADK90,Canoe,open,NA,21758
 2005,ADK90,Canoe,oc2stockmaster,12,21759
 2024,ADK90,Canoe,oc2rectournc,2,21763.6
@@ -3436,8 +3436,8 @@ year,raceId,boatType,classId,place,value
 2014,ADK90,Canoe,oc1stock,4,22240
 2023,ADK90,Unknown,voyageur,4,22241.9
 2002,ADK90,Kayak,k2mix,2,22245
-2010,ADK90,Canoe,oc2am,5,22248
 2018,ADK90,Canoe,oc2ammix,2,22248
+2010,ADK90,Canoe,oc2am,5,22248
 2025,ADK90,Canoe,oc2stock,10,22248.4
 2019,ADK90,Unknown,open,36,22249
 2018,ADK90,Canoe,open,NA,22249
@@ -3616,15 +3616,15 @@ year,raceId,boatType,classId,place,value
 2007,ADK90,Canoe,oc2tsockmixmaster,3,22508
 2011,ADK90,Canoe,open,NA,22512
 2021,ADK90,Canoe,oc1stockveteran,2,22515
-2001,ADK90,Canoe,oc2std,15,22516
 2015,ADK90,Guideboat,g2mix,1,22516
+2001,ADK90,Canoe,oc2std,15,22516
 2002,ADK90,Canoe,oc2stdmix,4,22519
 2022,ADK90,Canoe,oc2stockopen,12,22520.6
 2014,ADK90,Canoe,oc2ammix,2,22522
 2022,ADK90,Unknown,solorecwomen,3,22525.2
 2016,ADK90,Canoe,oc2ammix,3,22527
-2016,ADK90,Kayak,k1tour,1,22529
 2008,ADK90,Canoe,open,NA,22529
+2016,ADK90,Kayak,k1tour,1,22529
 2009,ADK90,Canoe,oc2family,1,22530
 2017,ADK90,Canoe,open,NA,22532
 2014,ADK90,Kayak,k1tourmaster,3,22537
@@ -3696,8 +3696,8 @@ year,raceId,boatType,classId,place,value
 2023,ADK90,Canoe,oc4stockmix,18,22638.5
 2011,ADK90,Canoe,open,NA,22639
 2023,ADK90,Canoe,oc2stockwomen,1,22639.7
-2004,ADK90,Canoe,oc2recmix,4,22642
 2001,ADK90,Canoe,oc2stdmaster,21,22642
+2004,ADK90,Canoe,oc2recmix,4,22642
 2006,ADK90,Kayak,k1tourmaster,10,22642
 2025,ADK90,Canoe,oc4stocknc,3,22643.5
 2010,ADK90,Canoe,open,NA,22644
@@ -4354,8 +4354,8 @@ year,raceId,boatType,classId,place,value
 2011,ADK90,Canoe,open,NA,23825
 2023,ADK90,Canoe,oc2recmaster,2,23827.8
 2025,ADK90,Canoe,oc4stockwomen,6,23834.5
-2010,ADK90,Canoe,open,NA,23836
 2017,ADK90,Canoe,open,NA,23836
+2010,ADK90,Canoe,open,NA,23836
 2018,ADK90,Canoe,oc2rec,2,23837
 2000,ADK90,Canoe,opentour,7,23839
 2013,ADK90,Canoe,open,NA,23839
@@ -5194,8 +5194,8 @@ year,raceId,boatType,classId,place,value
 2024,ADK90,Canoe,oc2stocktour,4,25858.6
 2008,ADK90,Canoe,open,NA,25860
 2005,ADK90,Kayak,k2searecwomenveteran,1,25863
-2016,ADK90,Canoe,open,NA,25873
 2013,ADK90,Canoe,open,NA,25873
+2016,ADK90,Canoe,open,NA,25873
 2010,ADK90,Canoe,open,NA,25877
 2025,ADK90,Canoe,oc2stocktour,6,25877.1
 2003,ADK90,Canoe,oc1stdmaster,6,25884
@@ -5380,8 +5380,8 @@ year,raceId,boatType,classId,place,value
 2025,ADK90,Canoe,oc2stock,24,26526
 2025,ADK90,Unknown,solorectour,2,26528.6
 2025,ADK90,Canoe,oc2rec,9,26529.5
-2015,ADK90,Canoe,open,NA,26532
 2016,ADK90,Canoe,voyageur,6,26532
+2015,ADK90,Canoe,open,NA,26532
 2015,ADK90,Canoe,open,NA,26535
 2010,ADK90,Canoe,open,NA,26536
 2012,ADK90,Canoe,open,NA,26540
@@ -5752,8 +5752,8 @@ year,raceId,boatType,classId,place,value
 2023,ADK90,Canoe,oc2stockmixnc,4,28506.4
 2002,ADK90,Canoe,open,22,28522
 2015,ADK90,Canoe,open,NA,28534
-2025,ADK90,Canoe,oc2stock,25,28550
 2004,ADK90,Canoe,open,NA,28550
+2025,ADK90,Canoe,oc2stock,25,28550
 2013,ADK90,Canoe,open,NA,28561
 2018,ADK90,Canoe,open,NA,28566
 2003,ADK90,Canoe,oc1stdmaster,7,28568

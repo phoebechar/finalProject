@@ -1,0 +1,157 @@
+---
+title: "models"
+format: html
+editor: visual
+---
+```{r}
+library(tidyverse)
+```
+
+```{r}
+day1 <- read.csv("day1_full.csv") 
+day2 <- read.csv("day2_full.csv") 
+day3 <- read.csv("day3_full.csv")
+```
+
+```{r}
+day1 <- day1 |> filter(boatType != "Unknown") |> 
+  mutate(boatType = if_else(classId == "voyageur",
+                            "Voyageur",
+                            boatType)) |>
+  mutate(n_paddler = case_when(
+    str_detect(classId, "1") ~ 1,
+    str_detect(classId, "2") ~ 2,
+    str_detect(classId, "3") ~ 3,
+    str_detect(classId, "4") ~ 4,
+    .default = 1
+  ))
+
+day2 <- day2 |> filter(boatType != "Unknown") |>
+  mutate(boatType = if_else(classId == "voyageur",
+                            "Voyageur",
+                            boatType)) |>
+  mutate(n_paddler = case_when(
+    str_detect(classId, "1") ~ 1,
+    str_detect(classId, "2") ~ 2,
+    str_detect(classId, "3") ~ 3,
+    str_detect(classId, "4") ~ 4,
+    .default = 1
+  ))
+
+day3 <- day3 |> filter(boatType != "Unknown") |>
+  mutate(boatType = if_else(classId == "voyageur",
+                            "Voyageur",
+                            boatType)) |>
+  mutate(n_paddler = case_when(
+    str_detect(classId, "1") ~ 1,
+    str_detect(classId, "2") ~ 2,
+    str_detect(classId, "3") ~ 3,
+    str_detect(classId, "4") ~ 4,
+    .default = 1
+  ))
+```
+
+```{r}
+ggplot(data = (day1 |> filter(boatType == "SUP")), aes(x = value)) +
+  geom_density()
+```
+
+```{r}
+library(shiny)
+
+boat_tabs <- tabsetPanel(
+  id = "craft",
+  type = "hidden",
+  tabPanel("Canoe",
+    radioButtons("people_sel", 
+                 label = "How many people?",
+                 choices = 1:4),
+  ),
+  tabPanel("Kayak",
+    radioButtons("people_sel", 
+                 label = "How many people?",
+                 choices = c(1, 2)),
+  ),
+  tabPanel("Voyageur",
+           radioButtons("people_sel", 
+                 label = "How many people?",
+                 choiceNames = "4+", choiceValues = 1)
+  ),
+  tabPanel("SUP",
+           radioButtons("people_sel", 
+                 label = "How many people?",
+                 choices = c(1))
+  ),
+)
+
+day_tabs <- tabsetPanel(
+  id = "level",
+  type = "hidden",
+  tabPanel("day1",
+    sliderInput("level_sel", 
+                 label = "What water level?",
+                 min = 1706, max = 1707, value = 1706.5),
+  ),
+  tabPanel("day2",
+    sliderInput("level_sel", 
+                 label = "What water level?",
+                 min = 2, max = 8, value = 5),
+  ),
+  tabPanel("day3",
+    sliderInput("level_sel", 
+                 label = "What water level?",
+                 min = 2.5, max = 4.5, value = 3.5),
+  )
+)
+
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      radioButtons("day_sel",
+                   label = "Which day are you interested in?",
+                   choiceNames = c("Day 1", "Day 2", "Day 3"),
+                   choiceValues = c("day1", "day2", "day3")),
+      sliderInput("temp_sel",
+                  label = "What temperature?",
+                  min = 45, max = 80, value = 60),
+      day_tabs,
+      selectInput("boat_sel",
+                   label = "Which type of craft?",
+                   choices = c("Canoe", "Kayak", "SUP", "Voyageur")),
+      boat_tabs,
+      actionButton("action", label = "Generate Prediction")
+    ),
+    mainPanel(
+      plotOutput("dist_plot"),
+      textOutput("pred_print")
+    ),
+  )
+)
+
+server <- function(input, output, session) {
+  observeEvent(input$boat_sel, {
+    updateTabsetPanel(inputId = "craft", selected = input$boat_sel)
+  })
+  observeEvent(input$day_sel, {
+    updateTabsetPanel(inputId = "level", selected = input$day_sel)
+  })
+  
+  adk_react <- reactive({
+    data <- get(input$day_sel)
+  })
+  
+  pred_react <- reactive({
+    mod_time <- lm(value ~ boatType + temp + water, adk_react())
+    user_boat <- data.frame(boatType = input$boat_sel, temp = input$temp_sel )
+  })
+
+  output$dist_plot <- renderPlot({
+    ggplot(data = adk_react(), aes(x = value)) +
+      geom_density()
+  })
+  
+}
+
+shinyApp(ui, server)
+```
+
