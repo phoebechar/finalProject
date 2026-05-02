@@ -158,34 +158,33 @@ server <- function(input, output, session) {
                        n_paddler = as.numeric(input$people_sel))
     list(
       prediction = predict(pred_mod, data),
-      day        = input$day_sel,
-      temp       = input$temp_sel,
-      level      = input$level_sel
+      day = parse_number(input$day_sel),
+      temp = input$temp_sel,
+      level = input$level_sel
       )
     })
   
       output$dist_plot <- renderPlot({
         ggplot(data = adk_react(), aes(x = value)) +
         geom_density() +
-         geom_vline(xintercept = mod_react()$prediction, color = "magenta") +
+         geom_vline(xintercept = mod_react()$prediction, 
+                    color = "magenta", linewidth = 2) +
+          theme_linedraw() +
           theme(axis.title.y = element_blank(), 
                 axis.text.y = element_blank()) +
-          theme_linedraw()
+          labs(x = "Time for Completion (Hours)",
+               title = glue::glue("Distribution of Times for Day ", mod_react()$day))
       })
       
       output$pred_print <- renderText({
-        paste0("On ", mod_react()$day_sel, 
-               " with a temperature of ", mod_react()$temp_sel,
-               " and a water level of ", mod_react()$level_sel,
-               " ft. Your chosen craft has a predicted time of ",
-               mod_react()$prediction, " hours")
+        mod <- mod_react()
+        paste0("On Day ", mod$day, 
+               " with a temperature of ", mod$temp,
+               " degrees and a water level of ", mod$level,
+               " ft, Your chosen craft has a predicted time of ",
+               round(mod$prediction, 2), " hours")
       })
 }
 
 shinyApp(ui, server)
-
 ```
-input$boat_sel
-input$temp_sel
-input$level_sel
-input$people_sel
