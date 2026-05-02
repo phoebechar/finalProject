@@ -26,7 +26,7 @@ My Shiny App allows users to choose a day, a temperature, a water level, a craft
 
 Based on the user's input, a predicted time will be calculated. This prediction will be printed in text—along with the input choices—and will be represented on a distribution graph of times for that day as a magenta line.
 
-The plot below is an example of a representative static plot that shows the prediction for a Canoe with 2 people on Day 2 with a temperature of 52 and a water level of 6 ft.
+The plot below is an example of a representative static plot that shows the prediction for a Canoe with 2 people on Day 2 with a temperature of 63 and a water level of 2.75 ft. These were the conditions for Day 2 in 2015.
 
 ```{r}
 #| warning: FALSE
@@ -35,8 +35,8 @@ library(tidyverse)
 day2 <- read.csv("data/day2_full.csv")
 
 pred_mod <- lm(value ~ boatType + temp + water + n_paddler, day2)
-data <- data.frame(boatType = "Canoe", temp = 52, 
-                   water = 6, n_paddler = 2)
+data <- data.frame(boatType = "Canoe", temp = 63, 
+                   water = 2.75, n_paddler = 2)
 
 ggplot(data = day2, aes(x = value)) +
       geom_density() +
@@ -49,19 +49,13 @@ ggplot(data = day2, aes(x = value)) +
            title = ("Distribution of Times for Day 2"))
 ```
 
-The prediction is about 5.68 hours, which we can see is right about the median time for day 2. In general, these plots are more interesting in comparison with others, which is why the Shiny App is so helpful.
-
-The image below shows a screenshot from the Shiny App for reference. The inputs are slightly different, with 3.2 as the water level instead, so we can see the difference.
+The prediction is about 6.16 hours, which we can see is above the median time for day 2. Now, using the Shiny App, we can compare these conditions with some that are similar in most ways, but not all. In 2011, the temperature was 63 degrees, but the water level was 7.28 ft. The image below shows a screenshot from the Shiny App with these conditions as input (*the water level is 7.25 instead of 7.28, but this difference is negligible).
 
 ![](images/examplePlot.png)
 
-We can see that, compared with the first result, this time is slower. It lies above the median for day 2. This makes perfect sense as lower water level means slower current and slower times.
+The time now is 5.34 hours. Compared with the first result, this time is much faster. Now, it lies below the median for day 2. This represents a use case for this model: before future races, competitors or race officials can input real water level and temperature data and receive time predictions. This is incredibly useful for teams who want to set goals, or officials who need to know when to be prepared for boats.
 
 ## Conclusion
 
-This project was motivated by Ryan Matthews' similar model for the AuSable River Marathon, however, the model resulting from this project is much less complex. The factors included in Matthews' model, which can be found at the bottom of [this page](https://www.ausablecanoemarathon.org/stats-and-history/estimated-winning-time/) are 
-
+This project was motivated by Ryan Matthews' [similar work](https://www.ausablecanoemarathon.org/stats-and-history/estimated-winning-time/) for the AuSable River Marathon, however, the model resulting from this project is much less complex. Although, it is more transparent, which is a value I am committed to.
 Given more time, I would have loved to find a way to account for paddlers' experience levels within the predictions; perhaps individuals who have completed the race many times before tend to be faster. I also would have been interested in expanding my weather data. Looking at precipitation, humidity, or cloud cover would have been interesting things to consider. Even within the data I had, it might have been interesting to explore non-linear relationships or interaction terms.
-
-
-
