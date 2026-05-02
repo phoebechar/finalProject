@@ -39,7 +39,7 @@ Can I produce a helpful predictive model for future boats' times in the 90-Miler
 
 I was inspired by Ryan Matthews who has created a model predicting times for the Ausable Canoe Marathon.
 
-![](ryan.png)
+![](images/ryan.png)
 
 ## Exploration: Water Level
 

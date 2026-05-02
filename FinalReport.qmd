@@ -1,0 +1,63 @@
+---
+title: "Final Project Report"
+author: "Phoebe Jones"
+format: 
+  html:
+    embed-resources: true
+---
+
+## Abstract
+
+The objective of this project is to build a model capable of predicting times for future boats competing in the Adirondack Canoe Classic (90-Miler). Motivated by Ryan Matthew's model for AuSable River Marathon times, this project relies on historic results from the 90-Miler as well as corresponding weather and water level data. Using this data, a linear regression model was built to predict completion times for each day of the three-day race. This model became the center of a Shiny App, allowing users to choose values for the model's predictors and receive a result. This app gives insight into the previously abstract impacts of various factors on competitor's times.
+
+## Introduction
+
+(5 points) an introduction section, further introducing the data and giving the questions of interest you will be exploring in your project.
+
+The Adirondack (ADK) Canoe Classic (often called "The 90-Miler) is a three day paddling race through the Adirondacks. The race is, as the nickname suggests, 90 miles of paddling and portaging (boat carrying over land) completed by various types of crafts paddled by wide ranges of people. The race has been held over 40 times and results containing times as well as paddler and boat class information are available on [PaddleStats](https://paddlestats.net/racehistory/ADK90).
+For this project, results from PaddleStats were combined with 
+
+## Process
+
+My Shiny App allows users to choose a day, a temperature, a water level, a craft type, and a number of paddlers (restricted to options with substantial data). As the water level measurements are from different locales with different scales, the slider for water level changes with the user's input for the day. Similarly, The user's input for craft type impacts the options available for number of paddlers.
+
+Based on the user's input, they will receive a predicted time. This prediction will be printed in text—along with the input choices—and will be represented on a distribution graph of times for that day as a magenta line.
+
+This is an example of a representative static plot that shows the prediction for a Canoe with 2 people on Day 2 with a temperature of 52 and a water level of 3.2 ft. The prediction is about 6.19 hours, which we can see is a bit slower than the median time for day 2.
+
+```{r}
+#| warning: FALSE
+library(tidyverse)
+
+day2 <- read.csv("data/day2_full.csv")
+
+pred_mod <- lm(value ~ boatType + temp + water + n_paddler, day2)
+data <- data.frame(boatType = "Canoe", temp = 52, 
+                   water = 3.2, n_paddler = 2)
+
+ggplot(data = day2, aes(x = value)) +
+      geom_density() +
+      geom_vline(xintercept = predict(pred_mod, data), 
+                 color = "magenta", linewidth = 2) +
+      theme_linedraw(base_size = 16) +
+      theme(axis.title.y = element_blank(), 
+            axis.text.y = element_blank()) +
+      labs(x = "Time for Completion (Hours)",
+           title = ("Distribution of Times for Day 2"))
+```
+
+For reference, the same inputs result in this view from the app.
+
+![](images/examplePlot.png)
+
+(75 points) a section showing relevant visualizations. Keep in mind that you do not need to write this as though it is a “step-by-step” thought-process. Instead, you should include your most interesting visualizations, along with interpretations for each. This section will likely be the longest, and, if you are answering multiple different questions of interest, you might break this section up into subsections.
+optionally, you can reference a Shiny app in this section, perhaps providing static visuals from your app.
+
+## Conclusion
+
+This project was motivated by Ryan Matthews's similar model for the AuSable River Marathon, however, the model resulting from this project is much less complex. The factors included in Matthews's model, which can be found at the bottom of [this page](https://www.ausablecanoemarathon.org/stats-and-history/estimated-winning-time/) are 
+
+Given more time, I would have loved to find a way to account for paddlers' experience levels within the predictions; perhaps individuals who have completed the race many times before tend to be faster. I also would have been interested in expanding my weather data. Looking at precipitation, humidity, or cloud cover would have been interesting things to consider.
+
+
+
