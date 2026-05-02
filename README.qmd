@@ -41,3 +41,10 @@ ggplot(data = day2, aes(x = value)) +
            title = ("Distribution of Times for Day 2"))
 ```
 
+## More
+
+To learn more about the 90-Miler, check out their [website](http://www.90miler.org/).
+
+To see more canoeing stats, check out [PaddleStats](https://paddlestats.net/).
+
+To see another predictive model like this, check out [Ryan Matthews's estimates](https://www.ausablecanoemarathon.org/stats-and-history/estimated-winning-time/) for the winning times at the AuSable Canoe Marathon.

@@ -38,3 +38,15 @@ inputting the following values in the Shiny App: Day 2, `temp` = 52,
 `level` = 3.2, `boatType` = Canoe, `n_paddler` = 2.
 
 ![](README_files/figure-commonmark/unnamed-chunk-1-1.png)
+
+## More
+
+To learn more about the 90-Miler, check out their
+[website](http://www.90miler.org/).
+
+To see more canoeing stats, check out
+[PaddleStats](https://paddlestats.net/).
+
+To see another predictive model like this, check out [Ryan Matthews’s
+estimates](https://www.ausablecanoemarathon.org/stats-and-history/estimated-winning-time/)
+for the winning times at the AuSable Canoe Marathon.
