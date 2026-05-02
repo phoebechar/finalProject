@@ -135,7 +135,7 @@ server <- function(input, output, session) {
     paste0("On Day ", mod$day, 
            " with a temperature of ", mod$temp,
            " degrees and a water level of ", mod$level,
-           " ft, Your chosen craft has a predicted time of ",
+           " ft, your chosen craft has a predicted time of ",
            round(mod$prediction, 2), " hours")
   })
 }

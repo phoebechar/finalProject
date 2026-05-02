@@ -47,6 +47,6 @@ To learn more about the 90-Miler, check out their
 To see more canoeing stats, check out
 [PaddleStats](https://paddlestats.net/).
 
-To see another predictive model like this, check out [Ryan Matthews’s
+To see another predictive model like this, check out [Ryan Matthews’
 estimates](https://www.ausablecanoemarathon.org/stats-and-history/estimated-winning-time/)
 for the winning times at the AuSable Canoe Marathon.

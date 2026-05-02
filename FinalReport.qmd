@@ -8,22 +8,25 @@ format:
 
 ## Abstract
 
-The objective of this project is to build a model capable of predicting times for future boats competing in the Adirondack Canoe Classic (90-Miler). Motivated by Ryan Matthew's model for AuSable River Marathon times, this project relies on historic results from the 90-Miler as well as corresponding weather and water level data. Using this data, a linear regression model was built to predict completion times for each day of the three-day race. This model became the center of a Shiny App, allowing users to choose values for the model's predictors and receive a result. This app gives insight into the previously abstract impacts of various factors on competitor's times.
+The objective of this project is to build a model capable of predicting times for future boats competing in the Adirondack Canoe Classic (90-Miler). Motivated by Ryan Matthews' model for AuSable River Marathon times, this project relies on historic results from the 90-Miler as well as corresponding weather and water level data. Using this data, a linear regression model was built to predict completion times for each day of the three-day race. This model became the center of a Shiny App, allowing users to choose values for the model's predictors and receive a result. This app gives insight into the previously abstract impacts of various factors on competitor's times.
 
 ## Introduction
 
-(5 points) an introduction section, further introducing the data and giving the questions of interest you will be exploring in your project.
-
 The Adirondack (ADK) Canoe Classic (often called "The 90-Miler) is a three day paddling race through the Adirondacks. The race is, as the nickname suggests, 90 miles of paddling and portaging (boat carrying over land) completed by various types of crafts paddled by wide ranges of people. The race has been held over 40 times and results containing times as well as paddler and boat class information are available on [PaddleStats](https://paddlestats.net/racehistory/ADK90).
-For this project, results from PaddleStats were combined with 
+
+For this project, results from PaddleStats were combined with water level and weather data collected from [USGS](https://www.usgs.gov/) and [Open-Meteo](https://open-meteo.com/) respectively. The water level data for each day was sourced from a measuring station somewhere along that day's course at 6:30am on the relevant day. Day 1 was sourced from First Lake at Old Forge, NY, Day 2 from the Raquette River at Piercefield, NY, and Day 3 from Saranac River at Plattsburgh, NY. The weather data is the mean temperature in degrees Fahrenheit similarly at a relevant locale for the day. Day 1 and Day 3 have the same locations as the water level, and Day 2's temperature information is from Fish Creek/Remsen, NY.
+
+My question of interest was: Can I produce a helpful predictive model for future boats' times in the 90-Miler? And, can I make this in a way that makes it accessible to others' use?
 
 ## Process
 
+The important variables for my work are `temp`, `level` (water level in ft), `value` (completion time in hours), `boatType` and `n_paddler` (# of paddlers in the craft). For my analysis, I used 4 boat types: canoe, kayak, SUP (stand-up paddleboard), and voyageur. A voyageur is a type of a canoe that is much larger and can seat more paddlers. The number of paddlers in the craft was only relevant for canoes and kayaks, as SUPs always have only one person, and the voyageur results are not consistent enough to confirm number of paddlers. My final model uses `temp`, `level`, `boatType`, and `n_paddler` to predict `value`.
+
 My Shiny App allows users to choose a day, a temperature, a water level, a craft type, and a number of paddlers (restricted to options with substantial data). As the water level measurements are from different locales with different scales, the slider for water level changes with the user's input for the day. Similarly, The user's input for craft type impacts the options available for number of paddlers.
 
-Based on the user's input, they will receive a predicted time. This prediction will be printed in text—along with the input choices—and will be represented on a distribution graph of times for that day as a magenta line.
+Based on the user's input, a predicted time will be calculated. This prediction will be printed in text—along with the input choices—and will be represented on a distribution graph of times for that day as a magenta line.
 
-This is an example of a representative static plot that shows the prediction for a Canoe with 2 people on Day 2 with a temperature of 52 and a water level of 3.2 ft. The prediction is about 6.19 hours, which we can see is a bit slower than the median time for day 2.
+The plot below is an example of a representative static plot that shows the prediction for a Canoe with 2 people on Day 2 with a temperature of 52 and a water level of 6 ft.
 
 ```{r}
 #| warning: FALSE
@@ -33,7 +36,7 @@ day2 <- read.csv("data/day2_full.csv")
 
 pred_mod <- lm(value ~ boatType + temp + water + n_paddler, day2)
 data <- data.frame(boatType = "Canoe", temp = 52, 
-                   water = 3.2, n_paddler = 2)
+                   water = 6, n_paddler = 2)
 
 ggplot(data = day2, aes(x = value)) +
       geom_density() +
@@ -46,18 +49,19 @@ ggplot(data = day2, aes(x = value)) +
            title = ("Distribution of Times for Day 2"))
 ```
 
-For reference, the same inputs result in this view from the app.
+The prediction is about 5.68 hours, which we can see is right about the median time for day 2. In general, these plots are more interesting in comparison with others, which is why the Shiny App is so helpful.
+
+The image below shows a screenshot from the Shiny App for reference. The inputs are slightly different, with 3.2 as the water level instead, so we can see the difference.
 
 ![](images/examplePlot.png)
 
-(75 points) a section showing relevant visualizations. Keep in mind that you do not need to write this as though it is a “step-by-step” thought-process. Instead, you should include your most interesting visualizations, along with interpretations for each. This section will likely be the longest, and, if you are answering multiple different questions of interest, you might break this section up into subsections.
-optionally, you can reference a Shiny app in this section, perhaps providing static visuals from your app.
+We can see that, compared with the first result, this time is slower. It lies above the median for day 2. This makes perfect sense as lower water level means slower current and slower times.
 
 ## Conclusion
 
-This project was motivated by Ryan Matthews's similar model for the AuSable River Marathon, however, the model resulting from this project is much less complex. The factors included in Matthews's model, which can be found at the bottom of [this page](https://www.ausablecanoemarathon.org/stats-and-history/estimated-winning-time/) are 
+This project was motivated by Ryan Matthews' similar model for the AuSable River Marathon, however, the model resulting from this project is much less complex. The factors included in Matthews' model, which can be found at the bottom of [this page](https://www.ausablecanoemarathon.org/stats-and-history/estimated-winning-time/) are 
 
-Given more time, I would have loved to find a way to account for paddlers' experience levels within the predictions; perhaps individuals who have completed the race many times before tend to be faster. I also would have been interested in expanding my weather data. Looking at precipitation, humidity, or cloud cover would have been interesting things to consider.
+Given more time, I would have loved to find a way to account for paddlers' experience levels within the predictions; perhaps individuals who have completed the race many times before tend to be faster. I also would have been interested in expanding my weather data. Looking at precipitation, humidity, or cloud cover would have been interesting things to consider. Even within the data I had, it might have been interesting to explore non-linear relationships or interaction terms.
 
 
 
