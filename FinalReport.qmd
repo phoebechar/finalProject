@@ -49,11 +49,11 @@ ggplot(data = day2, aes(x = value)) +
            title = ("Distribution of Times for Day 2"))
 ```
 
-The prediction is about 6.16 hours, which we can see is above the median time for day 2. Now, using the Shiny App, we can compare these conditions with some that are similar in most ways, but not all. In 2011, the temperature was 63 degrees, but the water level was 7.28 ft. The image below shows a screenshot from the Shiny App with these conditions as input (*the water level is 7.25 instead of 7.28, but this difference is negligible).
+The prediction is about 6.16 hours, which we can see is above the mode time for day 2. Now, using the Shiny App, we can compare these conditions with some that are similar in most ways, but not all. In 2011, the temperature was 63 degrees, but the water level was 7.28 ft. The image below shows a screenshot from the Shiny App with these conditions as input (*the water level is 7.25 instead of 7.28, but this difference is negligible).
 
 ![](images/examplePlot.png)
 
-The time now is 5.34 hours. Compared with the first result, this time is much faster. Now, it lies below the median for day 2. This represents a use case for this model: before future races, competitors or race officials can input real water level and temperature data and receive time predictions. This is incredibly useful for teams who want to set goals, or officials who need to know when to be prepared for boats.
+The time now is 5.34 hours. Compared with the first result, this time is much faster. Now, it lies below the mode time for day 2. This represents a use case for this model: before future races, competitors or race officials can input real water level and temperature data and receive time predictions. This is incredibly useful for teams who want to set goals, or officials who need to know when to be prepared for boats.
 
 ## Conclusion
 
