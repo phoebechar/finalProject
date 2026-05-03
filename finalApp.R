@@ -28,6 +28,11 @@ boat_tabs <- tabsetPanel(
                         label = "How many people?",
                         choices = c(1))
   ),
+  tabPanel("Guideboat",
+           radioButtons("people_sel", 
+                        label = "How many people?",
+                        choices = c(1, 2))
+  )
 )
 
 day_tabs <- tabsetPanel(
@@ -66,7 +71,7 @@ ui <- fluidPage(
       day_tabs,
       selectInput("boat_sel",
                   label = "Which type of craft?",
-                  choices = c("Canoe", "Kayak", "SUP", "Voyageur")),
+                  choices = c("Canoe", "Kayak", "SUP", "Voyageur", "Guideboat")),
       boat_tabs,
       actionButton("action", label = "Generate Prediction")
     ),
